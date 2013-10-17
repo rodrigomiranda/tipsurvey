@@ -1,0 +1,4 @@
+tipddy_survey:
+    resource: "@TipddySurveyBundle/Resources/config/routing.yml"
+    prefix:   /
+

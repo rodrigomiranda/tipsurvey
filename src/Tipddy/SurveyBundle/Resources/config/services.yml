@@ -1,0 +1,7 @@
+parameters:
+#    tipddy_survey.example.class: Tipddy\SurveyBundle\Example
+
+services:
+#    tipddy_survey.example:
+#        class: %tipddy_survey.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
