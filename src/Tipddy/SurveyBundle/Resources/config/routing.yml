@@ -1,3 +1,7 @@
-tipddy_survey_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TipddySurveyBundle:Default:index }
+TipddySurveyBundle_survey:
+        resource: "@TipddySurveyBundle/Resources/config/routing/survey.yml"
+        prefix:   /survey
+
+TipddySurveyBundle_question:
+        resource: "@TipddySurveyBundle/Resources/config/routing/question.yml"
+        prefix:   /question        

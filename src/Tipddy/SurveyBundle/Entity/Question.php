@@ -38,7 +38,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         * @ORM\Column(name="question", type="text")
         *
         * @Assert\NotBlank()
-        * @Assert\Range(min="30")
+        * @Assert\Length(
+        *    min = "5",
+        *    minMessage = "Your first name must be at least {{ limit }} characters length"  
+        * )
         */
        protected $question;
        
@@ -47,7 +50,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         * @ORM\Column(name="description", type="text")
         *
         * @Assert\NotBlank()
-        * @Assert\Range(min="30")
         */
        protected $description;
        
@@ -57,7 +59,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         *
         * @Assert\Type(type="bool")
         */
-        protected $randomOrder;
+        protected $randomOrder;  //respuestas en orden randomico.
         
         
        /**
@@ -66,7 +68,195 @@ use Symfony\Component\Validator\Constraints as Assert;
         * @Assert\Type(type="bool")
         */
        protected $questionRequired;    
+       
+       
+       /**
+        * 
+        * @ORM\ManyToOne(targetEntity="Survey")
+        * @ORM\JoinColumns({
+        * @ORM\JoinColumn(name="survey_id",  referencedColumnName="id")
+        * })
+        */
+        protected $survey;
         
         
-	 
- }
+        /**
+         * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"all"})
+         *
+         */
+         protected $answers;
+        
+        
+    public function __toString() 
+    {
+	    return $this->question;
+	    
+    }   
+        
+        
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set question
+     *
+     * @param string $question
+     * @return Question
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return string 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Question
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set randomOrder
+     *
+     * @param boolean $randomOrder
+     * @return Question
+     */
+    public function setRandomOrder($randomOrder)
+    {
+        $this->randomOrder = $randomOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Get randomOrder
+     *
+     * @return boolean 
+     */
+    public function getRandomOrder()
+    {
+        return $this->randomOrder;
+    }
+
+    /**
+     * Set questionRequired
+     *
+     * @param boolean $questionRequired
+     * @return Question
+     */
+    public function setQuestionRequired($questionRequired)
+    {
+        $this->questionRequired = $questionRequired;
+    
+        return $this;
+    }
+
+    /**
+     * Get questionRequired
+     *
+     * @return boolean 
+     */
+    public function getQuestionRequired()
+    {
+        return $this->questionRequired;
+    }
+
+    /**
+     * Set survey
+     *
+     * @param \Tipddy\SurveyBundle\Entity\Survey $survey
+     * @return Question
+     */
+    public function setSurvey(\Tipddy\SurveyBundle\Entity\Survey $survey = null)
+    {
+        $this->survey = $survey;
+    
+        return $this;
+    }
+
+    /**
+     * Get survey
+     *
+     * @return \Tipddy\SurveyBundle\Entity\Survey 
+     */
+    public function getSurvey()
+    {
+        return $this->survey;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
+     * @return Question
+     */
+    public function addAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
+    {
+        $this->answers[] = $answers;
+    
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
+     */
+    public function removeAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+}
