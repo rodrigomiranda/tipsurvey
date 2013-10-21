@@ -51,13 +51,13 @@ use Symfony\Component\Validator\Constraints as Assert;
          
          
          /**
-          * @ORM\Column(name="photo", type="string", length=255, nullable=false)
+          * @ORM\Column(name="photo", type="string", length=255, nullable=true)
           *
           */
           protected $photo;
           
           /**
-           * @ORM\Column(name="video", type="text")
+           * @ORM\Column(name="video", type="text", nullable=true)
            *
            */
           protected $video;

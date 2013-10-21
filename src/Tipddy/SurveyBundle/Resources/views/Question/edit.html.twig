@@ -3,8 +3,47 @@
 {% block body -%}
     <h1>Question edit</h1>
 
-    {{ form(edit_form) }}
-
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+       {{ form_row(edit_form.question) }}
+       {{ form_row(edit_form.description) }}
+       {{ form_row(edit_form.randomOrder) }}
+       {{ form_row(edit_form.questionRequired) }}
+       
+     <div id="all-answers" data-prototype='
+        <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td>Answer</td>     
+             <td>Type</td>
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td>{{ form_widget(edit_form.answers.vars.prototype.answer) }}</td>
+            <td>{{ form_widget(edit_form.answers.vars.prototype.type) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>'>      
+       {% for answer in edit_form.answers %}
+         <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td>Answer</td>     
+             <td>Type</td>
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td>{{ form_widget(answer.answer) }}</td>
+            <td>{{ form_widget(answer.type) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>
+       {% endfor %}  
+     </div>
+           
+    {{ form_end((edit_form)) }} 
         <ul class="record_actions">
     <li>
         <a href="{{ path('question') }}">

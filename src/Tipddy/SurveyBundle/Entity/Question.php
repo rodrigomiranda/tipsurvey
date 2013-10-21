@@ -236,6 +236,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     public function addAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
     {
         $this->answers[] = $answers;
+        
+        //lineas especiales
+        $answers->setQuestion($this);  //revistar posteriormente
     
         return $this;
     }
