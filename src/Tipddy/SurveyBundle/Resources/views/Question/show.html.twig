@@ -30,7 +30,7 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('question') }}">
+        <a href="{{ path('question', {'survey' : app.session.get('survey')}) }}">
             Back to the list
         </a>
     </li>

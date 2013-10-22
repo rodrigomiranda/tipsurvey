@@ -14,10 +14,15 @@ use Tipddy\SurveyBundle\Form\QuestionType;
  */
 class QuestionController extends Controller
 {
-       public function indexAction()
+       public function indexAction($survey)
        {
 	       $em = $this->getDoctrine()->getManager();
 	       $entities = $em->getRepository('TipddySurveyBundle:Question')->findAll();
+	       
+	       //guardar encuesta en session
+	       $session = $this->getRequest()->getSession();
+	       
+	       $session->set('survey', $survey);
 	       
 	       return $this->render('TipddySurveyBundle:Question:index.html.twig', array(
 	                  'entities' => $entities,
@@ -48,6 +53,12 @@ class QuestionController extends Controller
             
             if ($form->isValid()) {
 	            $em = $this->getDoctrine()->getManager();
+	           
+	            $session = $request->getSession();
+	            $entitySurvey = $em->getRepository('TipddySurveyBundle:Survey')->find($session->get('survey'));
+	            if ($entitySurvey) {
+	               $entity->setSurvey($entitySurvey);
+	            }
 	            $em->persist($entity);
 	            $em->flush();
 	            

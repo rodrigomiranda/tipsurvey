@@ -1,6 +1,7 @@
 question:
-    pattern:  /
+    pattern:  /{survey}
     defaults: { _controller: "TipddySurveyBundle:Question:index" }
+    requirements: { survey: \d+ }
 
 question_show:
     pattern:  /{id}/show

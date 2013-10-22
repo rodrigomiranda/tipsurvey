@@ -31,6 +31,11 @@
             Edit
         </a>
     </li>
+      <li>
+        <a href="{{ path('question', {'survey' : entity.id } ) }}">
+            Create a Question
+        </a>
+    </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
