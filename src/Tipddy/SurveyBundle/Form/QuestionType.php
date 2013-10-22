@@ -20,6 +20,8 @@ class QuestionType extends AbstractType
             ->add('question')
             ->add('description')
             ->add('randomOrder')
+            ->add('questionType', null, array('required' => true))
+            ->add('answerType', null, array('required' => true))
             ->add('questionRequired')
       //      ->add('survey')
             ->add('answers', 'collection', array(

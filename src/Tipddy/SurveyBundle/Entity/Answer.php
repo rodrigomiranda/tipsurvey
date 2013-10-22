@@ -36,36 +36,29 @@ use Symfony\Component\Validator\Constraints as Assert;
        
        
        /**
-        * @ORM\Column(name="answer", type="text")
+        * @ORM\Column(name="answer", type="text", nullable=true)
         *
-        * @Assert\NotBlank()
         */
-        protected $answer;
-        
-        /** 
-         * @ORM\Column(name="type", type="integer")
-         *
-         * @Assert\Type(type="integer")
-         */
-         protected $type;
-         
-         
+        protected $answer;        
+             
          /**
           * @ORM\Column(name="photo", type="string", length=255, nullable=true)
           *
+          * @Assert\Image()
           */
           protected $photo;
           
           /**
            * @ORM\Column(name="video", type="text", nullable=true)
            *
+           * @Assert\Url()
            */
           protected $video;
           	 
           	 
           /**
            * 
-           * @ORM\ManyToOne(targetEntity="Question")
+           * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
            * @ORM\JoinColumns({
            * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
            * })

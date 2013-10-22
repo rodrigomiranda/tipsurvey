@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% block javascripts %}
+   {{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/tipddysurvey/js/embed-answers.js') }}"></script>
+
+{% endblock %}
+
 {% block body -%}
     <h1>Question edit</h1>
 
@@ -8,42 +14,57 @@
        {{ form_row(edit_form.question) }}
        {{ form_row(edit_form.description) }}
        {{ form_row(edit_form.randomOrder) }}
+       {{ form_row(edit_form.questionType) }}
+       {{ form_row(edit_form.answerType) }}
        {{ form_row(edit_form.questionRequired) }}
        
-     <div id="all-answers" data-prototype='
+    <div id="all-answers" data-prototype='
         <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
           <tr>
              <td>&nbsp;</td>
-             <td>Answer</td>     
-             <td>Type</td>
+             <td colspan="2">Answer</td>     
              <td>&nbsp;</td>
          </tr>
          <tr>
             <td>&nbsp;</td>
-            <td>{{ form_widget(edit_form.answers.vars.prototype.answer) }}</td>
-            <td>{{ form_widget(edit_form.answers.vars.prototype.type) }}</td>
+            <td colspan="2">{{ form_widget(edit_form.answers.vars.prototype.answer) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>' data-prototype-photo='
+        <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td colspan="2">Answer</td>     
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">{{ form_widget(edit_form.answers.vars.prototype.photo) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>' data-prototype-video='
+        <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td colspan="2">Answer</td>     
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">{{ form_widget(edit_form.answers.vars.prototype.video) }}</td>
             <td class="adelete"></td>
          </tr>
         </table>'>      
+        {{ 'el valor de tipo de repuestas es ' ~ edit_form.vars.value.answerType }}
        {% for answer in edit_form.answers %}
-         <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
-          <tr>
-             <td>&nbsp;</td>
-             <td>Answer</td>     
-             <td>Type</td>
-             <td>&nbsp;</td>
-         </tr>
-         <tr>
-            <td>&nbsp;</td>
-            <td>{{ form_widget(answer.answer) }}</td>
-            <td>{{ form_widget(answer.type) }}</td>
-            <td class="adelete"></td>
-         </tr>
-        </table>
-       {% endfor %}  
+             
+              {% include 'TipddySurveyBundle:Question:includes/form-data-prototype-' ~ edit_form.vars.value.answerType|lower ~ '.html.twig' %}
+        
+        {% endfor %}
      </div>
-           
-    {{ form_end((edit_form)) }} 
+    {{ form_row(edit_form.submit) }}     
+    {{ form_row(edit_form._token) }}  
+    {{ form_end(edit_form, {'render_rest' : false }) }} 
         <ul class="record_actions">
     <li>
         <a href="{{ path('question') }}">

@@ -15,19 +15,43 @@
            {{ form_row(form.question) }}
            {{ form_row(form.description) }}
            {{ form_row(form.randomOrder) }}
+           {{ form_row(form.questionType) }}
+           {{ form_row(form.answerType) }}
            {{ form_row(form.questionRequired) }}
      <div id="all-answers" data-prototype='
         <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
           <tr>
              <td>&nbsp;</td>
-             <td>Answer</td>     
-             <td>Type</td>
+             <td colspan="2">Answer</td>     
              <td>&nbsp;</td>
          </tr>
          <tr>
             <td>&nbsp;</td>
-            <td>{{ form_widget(form.answers.vars.prototype.answer) }}</td>
-            <td>{{ form_widget(form.answers.vars.prototype.type) }}</td>
+            <td colspan="2">{{ form_widget(form.answers.vars.prototype.answer) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>' data-prototype-photo='
+        <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td colspan="2">Answer</td>     
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">{{ form_widget(form.answers.vars.prototype.photo) }}</td>
+            <td class="adelete"></td>
+         </tr>
+        </table>' data-prototype-video='
+        <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
+          <tr>
+             <td>&nbsp;</td>
+             <td colspan="2">Answer</td>     
+             <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">{{ form_widget(form.answers.vars.prototype.video) }}</td>
             <td class="adelete"></td>
          </tr>
         </table>'>      
@@ -35,21 +59,22 @@
          <table class="new-answers" id="tipddy_tipsurveybundle_questiontype_answers_$$name$$">
           <tr>
              <td>&nbsp;</td>
-             <td>Answer</td>     
-             <td>Type</td>
+             <td colspan="2">Answer</td>     
              <td>&nbsp;</td>
          </tr>
          <tr>
             <td>&nbsp;</td>
-            <td>{{ form_widget(answer.answer) }}</td>
-            <td>{{ form_widget(answer.type) }}</td>
+            <td colspan="2">{{ form_widget(answer.answer) }}</td>
             <td class="adelete"></td>
          </tr>
         </table>
        {% endfor %}  
      </div>
+      {{ form_row(form.submit) }}
       
-      {{ form_end(form) }}   
+      {{ form_row(form._token) }}
+      
+      {{ form_end(form, {'render_rest' : false }) }}   
 
         <ul class="record_actions">
     <li>

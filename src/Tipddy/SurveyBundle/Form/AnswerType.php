@@ -16,7 +16,6 @@ class AnswerType extends AbstractType
     {
         $builder
             ->add('answer')
-            ->add('type')
             ->add('photo')
             ->add('video')
           //  ->add('question')

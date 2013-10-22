@@ -11,24 +11,27 @@ jQuery(document).ready(function () {
 		deleteAnswerForm($(this));
 	})
 	
-	//Añade el enlace "New Answer"
-	collectionHolder.append($newLinkLi);
+    insertLinkAddNew($('#tipddy_surveybundle_question_answerType').val());
 	
 	
-	$addAnswersLink.on('click', function(e){
-	    //evita la redirección
-	    e.preventDefault();
-	    
-	    //Añade una nueva Answer en el siguiente bloque de código
-	    addAnswersForm(collectionHolder, $newLinkLi);
+	function addAnswersForm(collectionHolder, $newLinkLi, $answerType) {
 		
-	});
+		var prototype;
+		
+		if ($answerType == 2) {   //PHOTO
 	
+			prototype = collectionHolder.attr('data-prototype-photo');
 	
+		} else if ($answerType == 3) {   //VIDEO
 	
-	function addAnswersForm(collectionHolder, $newLinkLi) {
-		//Obtiene el data-prototype 
-		var prototype = collectionHolder.attr('data-prototype');
+		    prototype = collectionHolder.attr('data-prototype-video');
+	
+		} else  {   //TEXT
+   		
+            prototype = collectionHolder.attr('data-prototype');
+		
+		}
+		
 		
 		//Sustituye el $$name$$
 		var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
@@ -54,5 +57,32 @@ jQuery(document).ready(function () {
 		  $answerFormLi.remove();
 	   });
 	}
+	
+	
+	function insertLinkAddNew($answerType)
+	{
+		//Añade el enlace "New Answer"
+	    collectionHolder.append($newLinkLi);
+		
+     	$addAnswersLink.on('click', function(e){
+	  
+	       //evita la redirección
+	       e.preventDefault();
+	    
+	       //Añade una nueva Answer en el siguiente bloque de código
+	       addAnswersForm(collectionHolder, $newLinkLi, $answerType);
+		
+     	});
+	}
+	
+	//Cuando se selecccione algo en AnswerType
+	$('#tipddy_surveybundle_question_answerType').change(function(){
+	 	$('div#all-answers').empty();
+		//Añade el enlace "New Answer"
+	    insertLinkAddNew($(this).val());
+	
+	})
+	
+	
 	
 })

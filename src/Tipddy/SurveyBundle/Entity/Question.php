@@ -72,7 +72,7 @@ use Symfony\Component\Validator\Constraints as Assert;
        
        /**
         * 
-        * @ORM\ManyToOne(targetEntity="Survey")
+        * @ORM\ManyToOne(targetEntity="Survey", inversedBy="questions")
         * @ORM\JoinColumns({
         * @ORM\JoinColumn(name="survey_id",  referencedColumnName="id")
         * })
@@ -81,7 +81,28 @@ use Symfony\Component\Validator\Constraints as Assert;
         
         
         /**
-         * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"all"})
+         * 
+         * @ORM\ManyToOne(targetEntity="QuestionType")
+         * @ORM\JoinColumns({
+         * @ORM\JoinColumn(name="questiontype_id", referencedColumnName="id")
+         * })
+         */
+        protected $questionType;
+        
+        
+        /**
+         * 
+         * @ORM\ManyToOne(targetEntity="AnswerType")
+         * @ORM\JoinColumns({
+         * @ORM\JoinColumn(name="answertype_id", referencedColumnName="id")
+         * })
+         */
+        protected $answerType;
+        
+        
+               
+        /**
+         * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"all"} , orphanRemoval=true)
          *
          */
          protected $answers;
@@ -261,5 +282,51 @@ use Symfony\Component\Validator\Constraints as Assert;
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Set questionType
+     *
+     * @param \Tipddy\SurveyBundle\Entity\QuestionType $questionType
+     * @return Question
+     */
+    public function setQuestionType(\Tipddy\SurveyBundle\Entity\QuestionType $questionType = null)
+    {
+        $this->questionType = $questionType;
+    
+        return $this;
+    }
+
+    /**
+     * Get questionType
+     *
+     * @return \Tipddy\SurveyBundle\Entity\QuestionType 
+     */
+    public function getQuestionType()
+    {
+        return $this->questionType;
+    }
+
+    /**
+     * Set answerType
+     *
+     * @param \Tipddy\SurveyBundle\Entity\AnswerType $answerType
+     * @return Question
+     */
+    public function setAnswerType(\Tipddy\SurveyBundle\Entity\AnswerType $answerType = null)
+    {
+        $this->answerType = $answerType;
+    
+        return $this;
+    }
+
+    /**
+     * Get answerType
+     *
+     * @return \Tipddy\SurveyBundle\Entity\AnswerType 
+     */
+    public function getAnswerType()
+    {
+        return $this->answerType;
     }
 }
