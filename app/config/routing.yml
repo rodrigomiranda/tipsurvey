@@ -2,3 +2,10 @@ tipddy_survey:
     resource: "@TipddySurveyBundle/Resources/config/routing.yml"
     prefix:   /
 
+tipddy_login:
+    resource: "@TipddySecurityBundle/Resources/config/routing.yml"
+    prefix:  /
+
+
+
+
