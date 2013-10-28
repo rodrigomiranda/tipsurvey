@@ -1,0 +1,13 @@
+{% set tab = app.request.attributes.get('_route') %}
+
+<ul id="ul-menuprincipal" class="nav sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
+     <li id="m-panel">
+        <a href="{{ path('dashboard') }}">Panel</a>
+     </li>
+     <li id="m-campanas">
+         <a class="sf-with-ul" href="{{ path('survey') }}">Encuestas</a>
+     </li>
+     <li id="m-sistema">
+       <a href="#" class="sf-with-ul">Datos</a>
+    </li>
+</ul>

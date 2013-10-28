@@ -1,16 +1,23 @@
-{% extends '::base.html.twig' %}
+{% extends 'TipddyBackendBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Survey edit</h1>
+{% block content -%}
+    {{ form_start(edit_form) }}
+    <fieldset>
+      <legend>Editando Encuesta</legend> 
+      {{ form_row(edit_form.title, {'label' : 'Título'}) }}
+      {{ form_row(edit_form.description, {'label' : 'Descripción'}) }}    
+   
+    </fieldset>   
+    {{ include('TipddyBackendBundle::includes/buttons-form.html.twig', {'btn_action' : 'Actualizar', 'route' : 'survey'}) }} 
+    {{ form_end(edit_form, {'render_rest' : false }) }}  
+    
+    <p id="nav">
+     <a href="{{ path('survey') }}">Volver Listado</a>
+     |
+     <a href="#">Borrar</a>
+    </p>  
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('survey') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+<ul class="record_actions">
+        <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

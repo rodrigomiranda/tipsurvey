@@ -1,24 +1,32 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('bundles/tipddysecurity/css/login.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
 {% block body %}
+ <div id="login">
+   <h1><img src="{{ asset('bundles/tipddysecurity/images/logo-tipsurvey.png') }}" /></h1>
+
 {% if error %}
-    <div>{{ error.message }}</div>
+    <div id="login_error">{{ error.message }}</div>
 {% endif %}
 
-<form action="{{ path('login_check') }}" method="post">
- <label for="username">Username:</label>
- <input type="text" id="username" name="_username" value="{{ last_username }}" />
+<form id="login-form" action="{{ path('login_check') }}" method="post">
+ <p>
+   <label for="user_login">Usuario</label>  <br />
+    <input type="text" id="input_login" name="_username" value="{{ last_username }}" />
+ </p>
  
- <label for="password">Password: </label>
- <input type="password" id="password" name="_password" />
+ <p>
+   <label for="user_password">Contraseña</label>  <br />
+    <input type="password" id="input_password" name="_password" />
+ </p>
  
- {#  Añade lo siguiente si quieres redirigir al usuario a una URL concreta después del login
-     (explicado má adelante)
-     <input type="hidden" name="_target_path" value="/account" />
- #}
- 
- <button type="submit">login</button>
+  <button type="submit">Ingresar</button>
 
-</form>
+   </form>
+ </div>
 
 {% endblock %}

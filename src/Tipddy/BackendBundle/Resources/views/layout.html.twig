@@ -1,0 +1,54 @@
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tipddybackend/css/style.css') }}" /> 
+{% endblock %}
+
+{% block body %}
+   <div id="root">
+      <div id="topBars">
+         <div id="topLeftBar">
+            {% include 'TipddyBackendBundle::includes/top-bars-left.html.twig' %}             
+         </div>
+        <div id="topRightBar">
+            {% include 'TipddyBackendBundle::includes/top-bars-right.html.twig' %}
+        </div>
+      </div>
+      <div id="header">
+             <span id="logo"></span>
+      </div>
+      <div>
+          {% include 'TipddyBackendBundle::includes/main-menu.html.twig' %}   
+      </div>   
+
+      <div class="page">
+          <div class="pageWrap">
+              <div class="nav_sep">
+                 <div id="top_nav">
+              {% include 'TipddyBackendBundle::includes/sub-menu.html.twig' %}             
+                 </div>
+              </div>
+              <div id="dashboard">
+          {# Acá se configura la opción para mostrar o no el lado izquierdo #}
+          {% block optionsexport %} {% endblock %} 
+          {% block menuizq %}{% endblock %}
+
+                     <div id="contenido" class="width-contenido">
+                      
+                      {% block content %} {% endblock %}
+                      
+                     </div>
+                     <br class="clearfloat" />
+                  </div>                
+              </div>
+         </div>
+         
+      </div>
+      
+      <div id="footer">
+          <hr />
+          <div>Versión TipSurvey 1.0.1</div>
+          <div>
+             <a><img border="0" src="{{ asset('bundles/tipddybackend/images/logo-tipddy.png')}}" /></a>
+            &copy; 2011 - Tipddy | info@tipddy.cl
+          </div>
+      </div>
+{% endblock %} 

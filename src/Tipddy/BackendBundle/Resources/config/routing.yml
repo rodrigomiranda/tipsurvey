@@ -1,0 +1,3 @@
+TipddyBackendBundle_dashboard:
+    resource: "@TipddyBackendBundle/Resources/config/routing/dashboard.yml"
+    prefix:   /dashboard

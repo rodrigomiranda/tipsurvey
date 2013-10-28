@@ -1,0 +1,164 @@
+/* Login de la aplicación */
+
+body {
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+    font-size: 1em;
+    line-height: 1.33;
+}
+
+#login{
+    margin: 7em auto;
+    width: 320px;
+}
+
+#login_error, .message{
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 0 16px 8px;
+    padding: 12px;
+}
+/*
+.error_list{
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 0 16px 8px;
+    padding: 12px;
+    background-color:#FFEBE8;
+    border-color:#CC0000;
+    width: 30%;
+    list-style:none;
+}
+*/
+
+.error_list {
+    padding: 0;
+    margin: 0;
+}
+
+
+form#login-form {
+ -moz-background-clip: border;
+ -moz-background-inline-policy: continuous;
+ -moz-background-origin: padding;
+ -moz-border-radius-bottomleft: 11px;
+ -moz-border-radius-bottomright: 11px;
+ -moz-border-radius-topleft: 11px;
+ -moz-border-radius-topright: 11px;
+ -moz-box-shadow:0 4px  18px  #C8C8C8;
+ background: #FFFFFF none repeat scroll 0 0;
+ border: 1px  solid  #E5E5E5;
+ font-weight:normal;
+ margin-left:8px;
+ padding:16px 16px 40px;
+}
+
+
+#login-form, #formCrearActualizar {
+ -moz-background-clip: border;
+ -moz-background-inline-policy: continuous;
+ -moz-background-origin: padding;
+ -moz-border-radius-bottomleft: 11px;
+ -moz-border-radius-bottomright: 11px;
+ -moz-border-radius-topleft: 11px;
+ -moz-border-radius-topright: 11px;
+ -moz-box-shadow:0 4px  18px  #C8C8C8;
+ background: #FFFFFF none repeat scroll 0 0;
+ border: 1px  solid  #E5E5E5;
+ font-weight:normal;
+ margin-left:8px;
+ padding:16px 16px 40px;
+}
+
+#formCrearActualizar{
+
+    width: 90%;
+
+}
+
+
+
+label{
+    color: #777777;
+    font-size: 13px;
+}
+
+#input_perfil, #input_login, #input_password, #input_organizacion{
+     font-size:18px;
+     width: 90%;
+
+}
+
+#login_error{
+    background-color: #FFEBE8;
+    border-color: #CC0000;
+}
+
+#login_error{
+   -moz-border-radius-bottomleft:3px;
+   -moz-border-radius-bottomright:3px;
+   -moz-border-radius-topleft:3px;
+   -moz-border-radius-topright:3px;
+   border-style:solid;
+   border-width:1px;
+   margin:0 0 16px 8px;
+   padding:12px;
+}
+
+
+#login_error strong{
+
+    font-size: 16px;
+}
+
+/* botones */
+input.submit:hover, button:hover, input[type="submit"]:hover{
+   /*background-color:#D5D5D5;*/
+   opacity: 0.7;
+}
+
+.btn-m:hover, .btn-m:focus, input.btn-m[type="submit"]:hover, input.btn-m[type="submit"]:focus, button.btn-m:hover, button.btn-m:focus {
+background-position:0 -206px;
+}
+
+.btn:hover, .btn:focus, input.btn[type="submit"]:hover, input.btn[type="submit"]:focus, button.btn:hover, button.btn:focus {
+background-position:0 -6px;
+border-color:#999999 #999999 #888888;
+color:#000000;
+}
+
+
+button {
+    outline: medium none;
+}
+
+input.submit, button, input[type="submit"], input[type="button"]{
+    background-color: #E6E6E6;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    color: #000000;
+    cursor: pointer;
+    font-size: x-small;
+    padding: 4px 8px;
+    vertical-align: top;
+}
+
+
+p#nav {
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+p#nav a {
+    font-size: 16px;
+}
+
+p#nav a, span.topBarElem a {
+    color: #217598 !important;
+}

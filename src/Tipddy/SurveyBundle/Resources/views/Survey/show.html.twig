@@ -1,41 +1,32 @@
-{% extends '::base.html.twig' %}
+{% extends 'TipddyBackendBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Survey</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('survey') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('survey_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-      <li>
-        <a href="{{ path('question', {'survey' : entity.id } ) }}">
-            Create a Question
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block content -%}
+ 
+  <fieldset>
+    <legend>Mostrando Encuesta</legend>
+    
+    {{ _self.fieldReadText('title', attribute(entity, 'title'), 'Título' ) }}
+    {{ _self.fieldReadText('description', attribute(entity, 'description'), 'Descripción') }}
+  <fielset>
+  <p id="nav">
+     <a href="{{ path('survey') }}">Volver Listado</a>
+     |
+     <a href="{{ path('survey_edit', {'id' : entity.id} ) }}">Editar</a>
+     |
+     <a href="#">Borrar</a>
+  </p>  
 {% endblock %}
+
+{% macro fieldReadText(element, value, label) %}
+     <div class="">
+          <label for="tipddy_surveybundle_show_{{ element }}">{{ label }}</label>
+          
+          <div class="field-wrapper">
+             {{ value }}
+          </div>
+     </div>
+
+{% endmacro %}
+
+
+

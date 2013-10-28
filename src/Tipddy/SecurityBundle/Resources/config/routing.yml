@@ -1,5 +1,5 @@
 login:
-    pattern: /login
+    pattern: /
     defaults: { _controller: "TipddySecurityBundle:Default:login" }
 
 login_check:

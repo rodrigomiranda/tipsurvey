@@ -1,30 +1,32 @@
-{% extends '::base.html.twig' %}
+{% extends 'TipddyBackendBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Survey list </h1>
+{% block content -%}
+    <h1>Encuestas <a class="button add-new-h2" href="{{ path('survey_new') }}">Nueva</a> </h1>
 
-    <table class="records_list">
+    <table id="tabla-listado" class="listado post fixed" cellspacing="0">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Actions</th>
+                <th>#</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Estadísticas</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
+            <tr class="registro-fila {{ cycle(['tr-odd', 'tr-even'], loop.index) }}">
                 <td><a href="{{ path('survey_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.description }}</td>
-                <td>
-                <ul>
+                <td>{{ entity.description }}</td>
+                <td class="td-actions">
+                <ul id="iconos">
                     <li>
-                        <a href="{{ path('survey_show', { 'id': entity.id }) }}">show</a>
+                        <a id="edit" href="{{ path('survey_show', { 'id': entity.id }) }}"></a>
                     </li>
                     <li>
-                        <a href="{{ path('survey_edit', { 'id': entity.id }) }}">edit</a>
+                      <a id="deleted" href="{{ path('survey_edit', { 'id': entity.id }) }}"></a>
                     </li>
                 </ul>
                 </td>
@@ -33,11 +35,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('survey_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+  {% endblock %}

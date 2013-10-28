@@ -1,0 +1,31 @@
+{% extends "TipddyBackendBundle::layout.html.twig" %}
+
+{% block submenuprincipal %} {% include "TipddyBackendBundle::includes/submenu.html.twig" %} {% endblock %}
+
+{% block content %}
+ <form id="new-list" method="post" action="">
+  <fieldset>
+     <legend>Seleccionar Encuesta</legend>  
+     <div class="field-group">
+        <label class="invalid" for="name">
+          Encuesta
+          <span class="asterisk">*</span>  
+        </label>
+        <div class="field-wrapper">
+          <select id="company" name="company">
+                <option value="">No hay encuestas</option>
+          </select>
+          
+        </div>
+     </div>
+  </fieldset>
+  <div class="save-cancel-group">
+    <button id="new-list-save" class="button" type="submit">Seleccionar</button>
+  </div>
+ </form>
+<p id="nav">
+   <a href="#">Organizaciones</a>
+   |
+   <a href="#">Usuarios</a>
+</p>
+{% endblock %}

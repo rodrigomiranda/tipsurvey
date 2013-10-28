@@ -1,14 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends 'TipddyBackendBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Survey creation</h1>
-
-    {{ form(form) }}
+{% block content -%}
+ 
+    {{ form_start(form, {'attr':{'novalidate' : 'novalidate'} }) }} 
+      <fieldset>
+        <legend>Nueva Encuesta</legend>
+        {{ form_row(form.title, {'label' : 'Título'} ) }}
+        {{ form_row(form.description, {'label' : 'Descripción'}) }}
+      </fieldset>
+    {% include 'TipddyBackendBundle::includes/buttons-form.html.twig' with {'btn_action' : 'Crear', 'route' : 'survey'} %}  
+     {{ form_end(form, {'render_rest' : false }) }}  
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('survey') }}">
-            Back to the list
+            Back to the listffff
         </a>
     </li>
 </ul>

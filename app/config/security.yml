@@ -7,10 +7,10 @@ security:
                 login_path: login
                 check_path: login_check
                 always_use_default_target_path: true
-                default_target_path: /survey
+                default_target_path: /dashboard
             logout:
                 path: /logout
-                target: /survey
+                target: /
     access_control:
          - { path: ^/survey , roles: [ROLE_TIPDDY] }
     providers:
