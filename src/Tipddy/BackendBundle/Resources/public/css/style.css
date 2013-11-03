@@ -2188,6 +2188,10 @@ tr.registro-fila ul {
 
 }
 
+tr.registro-fila ul#iconos {
+	width: 140px;
+}
+
 tr.registro-fila ul li {
 	float: left;
 	display: inline;
@@ -2201,6 +2205,19 @@ ul#iconos li #edit, #edit {
     height: 22px;
     margin: 0 0 0 1px;
     width: 41px;
+}
+
+
+ul#iconos li #show, #show {
+    background: url("../images/iconos.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 22px;
+    margin: 0 0 0 1px;
+    width: 41px;
+}
+
+ul#iconos li #show:hover, #show:hover {
+	 background: url("../images/iconos.png") no-repeat scroll 0 -22px rgba(0, 0, 0, 0);
 }
 
 ul#iconos li #edit:hover, #edit:hover {
@@ -2220,7 +2237,7 @@ ul#iconos li #deleted:hover, #deleted:hover {
 }
 
 td.td-actions {
-	width: 14%;
+	width: 18%;
 }
 
 

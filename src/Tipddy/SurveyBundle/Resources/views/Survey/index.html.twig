@@ -22,12 +22,15 @@
                 <td>{{ entity.description }}</td>
                 <td class="td-actions">
                 <ul id="iconos">
-                    <li>
-                        <a id="edit" href="{{ path('survey_show', { 'id': entity.id }) }}"></a>
-                    </li>
-                    <li>
-                      <a id="deleted" href="{{ path('survey_edit', { 'id': entity.id }) }}"></a>
-                    </li>
+                  <li>
+                     <a id="show" href="{{ path('survey_show', { 'id': entity.id }) }}"></a>
+                  </li>
+                  <li>
+                     <a id="edit" href="{{ path('survey_edit', { 'id': entity.id }) }}"></a>
+                  </li>
+                  <li>
+                     <a id="deleted" href="{{ path('survey_edit', { 'id': entity.id }) }}"></a>
+                  </li>
                 </ul>
                 </td>
             </tr>
