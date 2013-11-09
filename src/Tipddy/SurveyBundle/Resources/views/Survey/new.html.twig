@@ -9,6 +9,8 @@
         {{ form_row(form.description, {'label' : 'Descripción'}) }}
       </fieldset>
     {% include 'TipddyBackendBundle::includes/buttons-form.html.twig' with {'btn_action' : 'Crear', 'route' : 'survey'} %}  
+     
+     {{ form_row(form._token) }}
      {{ form_end(form, {'render_rest' : false }) }}  
 
         <ul class="record_actions">

@@ -1,7 +1,9 @@
 parameters:
-#    tipddy_backend.example.class: Tipddy\BackendBundle\Example
+
 
 services:
-#    tipddy_backend.example:
-#        class: %tipddy_backend.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    tipddy_backend.filterchain:
+        class: Tipddy\BackendBundle\Listener\SessionControlListener  
+        arguments: [@service_container, @session]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: -100 }

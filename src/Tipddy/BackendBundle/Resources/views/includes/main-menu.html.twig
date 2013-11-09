@@ -4,7 +4,7 @@
      <li id="m-panel" {{ route_active(tab, 'dashboard') ? 'class="sfHover"' : '' }}>
         <a href="{{ path('dashboard') }}">Panel</a>
      </li>
-     <li id="m-campanas" {{ route_active(tab, 'survey') ? 'class="sfHover"' : '' }}>
+     <li id="m-campanas" {{ route_active(tab, ['survey', 'question']) ? 'class="sfHover"' : '' }}>
          <a class="sf-with-ul" href="{{ path('survey') }}">Encuestas</a>
      </li>
      <li id="m-sistema">

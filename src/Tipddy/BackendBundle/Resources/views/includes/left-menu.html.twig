@@ -1,0 +1,27 @@
+{#
+{% set campaign = app.request.attributes.get('id', '5') %}
+{% set page = app.request.attributes.get('page') %}
+#}
+{% set tab = app.request.attributes.get('_route') %}
+   <div id="menu-izq">
+      <div id="button-space">
+         <div class="button p4">
+           <span class="titulo">Opciones Encuesta</span><span class="dwn">▼</span>
+         </div>
+      </div>
+      <div id="menu">
+       <div id="menu-izq-contenido" class="widget">
+        <ul class="navegador">
+          <li {{ route_active_menu_left(tab, 'survey_edit') ? 'class="destacado"' : ''  }}><a href="{{ path('survey_edit', {'id' : app.session.get('survey')}) }}">Editar Encuesta</a></li>
+                 <li {{ route_active_menu_left(tab, 'question') ? 'class="destacado"' : '' }}><a href="{{ path('question') }}">Preguntas</a></li>
+                 <li id="registro">
+                   <a class="desplegable" href="#">Seguimiento</a>
+                     <ul class="subnavegador" style="display:none;">
+                         <li><a href="">Gestión de Respuestas</a></li>                     
+                         <li><a href="#">Estadísticas</a></li>
+                     </ul>                 
+                 </li>   
+          </ul>
+         </div>
+      </div>
+   </div>

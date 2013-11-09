@@ -29,11 +29,14 @@
                  </div>
               </div>
               <div id="dashboard">
-          {# Acá se configura la opción para mostrar o no el lado izquierdo #}
+               {% if app.session.has('survey') %}
+                  {% include 'TipddyBackendBundle::includes/left-menu.html.twig' %}
+               {% endif %}
+                    
           {% block optionsexport %} {% endblock %} 
           {% block menuizq %}{% endblock %}
 
-                     <div id="contenido" class="width-contenido">
+                     <div id="contenido" class="{{ app.session.has('survey') ? 'width-contenido-menu' : 'width-contenido' }}">
                       
                       {% block content %} {% endblock %}
                       

@@ -13,7 +13,9 @@
      |
      <a href="{{ path('survey_edit', {'id' : entity.id} ) }}">Editar</a>
      |
-     <a href="#">Borrar</a>
+     <a href="{{ path('question', {'survey' : entity.id} ) }}">Preguntas</a>
+     |
+    <a href="#">Borrar</a>
   </p>  
 {% endblock %}
 
@@ -25,8 +27,4 @@
              {{ value }}
           </div>
      </div>
-
 {% endmacro %}
-
-
-

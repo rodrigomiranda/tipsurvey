@@ -9,6 +9,8 @@
    
     </fieldset>   
     {{ include('TipddyBackendBundle::includes/buttons-form.html.twig', {'btn_action' : 'Actualizar', 'route' : 'survey'}) }} 
+    {{ form_row(edit_form._token) }}
+    
     {{ form_end(edit_form, {'render_rest' : false }) }}  
     
     <p id="nav">

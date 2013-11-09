@@ -9,6 +9,7 @@ class UtilExtension extends \Twig_Extension
    {
 	   return array(
 	           'route_active' => new \Twig_Function_Method($this, 'routeActive'),
+	           'route_active_menu_left' => new \Twig_Function_Method($this, 'routeActiveMenuLeft')
 	   );
 	   
 	   
@@ -41,6 +42,13 @@ class UtilExtension extends \Twig_Extension
        
      return $result;
    
+  }
+  
+  
+  public function routeActiveMenuLeft($routeCurrent, $elementCompadre)
+  {
+      return $routeCurrent == $elementCompadre;
+	  
   }
   
   

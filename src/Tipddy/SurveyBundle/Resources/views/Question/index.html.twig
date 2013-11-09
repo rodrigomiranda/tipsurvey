@@ -1,47 +1,41 @@
-{% extends '::base.html.twig' %}
+{% extends 'TipddyBackendBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Question list</h1>
-
-    <table class="records_list">
+{% block content -%}
+<h1>Preguntas <a class="button add-new-h2" href="{{ path('question_new') }}">Nueva</a> </h1>
+<table id="tabla-listado" class="listado post fixed" cellspacing="0">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Question</th>
-                <th>Description</th>
-                <th>Randomorder</th>
-                <th>Questionrequired</th>
-                <th>Actions</th>
+                <th>#</th>
+                <th>Pregunta</th>
+                <th>Descripción</th>
+                <th>Orden Random</th>
+                <th>Obligatoria</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('question_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <tr class="registro-fila {{ cycle(['tr-odd', 'tr-even'], loop.index) }}">
+                <td>{{ entity.id }}</td>
                 <td>{{ entity.question }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.randomOrder }}</td>
-                <td>{{ entity.questionRequired }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('question_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('question_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                <td>{{ entity.questionRequired }}</td>                
+                <td class="td-actions">
+                <ul id="iconos">
+                  <li>
+                     <a id="show" href="{{ path('question_show', { 'id': entity.id }) }}"></a>
+                  </li>
+                  <li>
+                     <a id="edit" href="{{ path('question_edit', { 'id': entity.id }) }}"></a>
+                  </li>
+                  <li>
+                     <a id="deleted" href="{{ path('question_edit', { 'id': entity.id }) }}"></a>
+                  </li>
                 </ul>
                 </td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('question_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+       </tbody>
+</table>
+{% endblock %}

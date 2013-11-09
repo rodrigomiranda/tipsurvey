@@ -67,7 +67,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         *
         * @Assert\Type(type="bool")
         */
-       protected $questionRequired;    
+        protected $questionRequired;    
        
        
        /**
@@ -87,7 +87,7 @@ use Symfony\Component\Validator\Constraints as Assert;
          * @ORM\JoinColumn(name="questiontype_id", referencedColumnName="id")
          * })
          */
-        protected $questionType;
+         protected $questionType;
         
         
         /**
@@ -97,7 +97,7 @@ use Symfony\Component\Validator\Constraints as Assert;
          * @ORM\JoinColumn(name="answertype_id", referencedColumnName="id")
          * })
          */
-        protected $answerType;
+         protected $answerType;
         
         
                
@@ -108,194 +108,194 @@ use Symfony\Component\Validator\Constraints as Assert;
          protected $answers;
         
         
-    public function __toString() 
-    {
-	    return $this->question;
+	    public function __toString() 
+	    {
+		    return $this->question;
+		    
+	    }   
+        
+        
+	     /**
+	     * Constructor
+	     */
+	    public function __construct()
+	    {
+	        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+	    }
+    
+	    /**
+	     * Get id
+	     *
+	     * @return integer 
+	     */
+	    public function getId()
+	    {
+	        return $this->id;
+	    }
+
+	    /**
+	     * Set question
+	     *
+	     * @param string $question
+	     * @return Question
+	     */
+	    public function setQuestion($question)
+	    {
+	        $this->question = $question;
 	    
-    }   
-        
-        
-     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	        return $this;
+	    }
 
-    /**
-     * Set question
-     *
-     * @param string $question
-     * @return Question
-     */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
-    
-        return $this;
-    }
+	    /**
+	     * Get question
+	     *
+	     * @return string 
+	     */
+	    public function getQuestion()
+	    {
+	        return $this->question;
+	    }
 
-    /**
-     * Get question
-     *
-     * @return string 
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
+	    /**
+	     * Set description
+	     *
+	     * @param string $description
+	     * @return Question
+	     */
+	    public function setDescription($description)
+	    {
+	        $this->description = $description;
+	    
+	        return $this;
+	    }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Question
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
+	    /**
+	     * Get description
+	     *
+	     * @return string 
+	     */
+	    public function getDescription()
+	    {
+	        return $this->description;
+	    }
 
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+	    /**
+	     * Set randomOrder
+	     *
+	     * @param boolean $randomOrder
+	     * @return Question
+	     */
+	    public function setRandomOrder($randomOrder)
+	    {
+	        $this->randomOrder = $randomOrder;
+	    
+	        return $this;
+	    }
 
-    /**
-     * Set randomOrder
-     *
-     * @param boolean $randomOrder
-     * @return Question
-     */
-    public function setRandomOrder($randomOrder)
-    {
-        $this->randomOrder = $randomOrder;
-    
-        return $this;
-    }
+	    /**
+	     * Get randomOrder
+	     *
+	     * @return boolean 
+	     */
+	    public function getRandomOrder()
+	    {
+	        return $this->randomOrder;
+	    }
 
-    /**
-     * Get randomOrder
-     *
-     * @return boolean 
-     */
-    public function getRandomOrder()
-    {
-        return $this->randomOrder;
-    }
+	    /**
+	     * Set questionRequired
+	     *
+	     * @param boolean $questionRequired
+	     * @return Question
+	     */
+	    public function setQuestionRequired($questionRequired)
+	    {
+	        $this->questionRequired = $questionRequired;
+	    
+	        return $this;
+	    }
 
-    /**
-     * Set questionRequired
-     *
-     * @param boolean $questionRequired
-     * @return Question
-     */
-    public function setQuestionRequired($questionRequired)
-    {
-        $this->questionRequired = $questionRequired;
-    
-        return $this;
-    }
+	    /**
+	     * Get questionRequired
+	     *
+	     * @return boolean 
+	     */
+	    public function getQuestionRequired()
+	    {
+	        return $this->questionRequired;
+	    }
 
-    /**
-     * Get questionRequired
-     *
-     * @return boolean 
-     */
-    public function getQuestionRequired()
-    {
-        return $this->questionRequired;
-    }
+	    /**
+	     * Set survey
+	     *
+	     * @param \Tipddy\SurveyBundle\Entity\Survey $survey
+	     * @return Question
+	     */
+	    public function setSurvey(\Tipddy\SurveyBundle\Entity\Survey $survey = null)
+	    {
+	        $this->survey = $survey;
+	    
+	        return $this;
+	    }
 
-    /**
-     * Set survey
-     *
-     * @param \Tipddy\SurveyBundle\Entity\Survey $survey
-     * @return Question
-     */
-    public function setSurvey(\Tipddy\SurveyBundle\Entity\Survey $survey = null)
-    {
-        $this->survey = $survey;
-    
-        return $this;
-    }
+	    /**
+	     * Get survey
+	     *
+	     * @return \Tipddy\SurveyBundle\Entity\Survey 
+	     */
+	    public function getSurvey()
+	    {
+	        return $this->survey;
+	    }
 
-    /**
-     * Get survey
-     *
-     * @return \Tipddy\SurveyBundle\Entity\Survey 
-     */
-    public function getSurvey()
-    {
-        return $this->survey;
-    }
+	    /**
+	     * Add answers
+	     *
+	     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
+	     * @return Question
+	     */
+	    public function addAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
+	    {
+	        $this->answers[] = $answers;
+	        
+	        //lineas especiales
+	        $answers->setQuestion($this);  //revistar posteriormente
+	    
+	        return $this;
+	    }
 
-    /**
-     * Add answers
-     *
-     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
-     * @return Question
-     */
-    public function addAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
-    {
-        $this->answers[] = $answers;
-        
-        //lineas especiales
-        $answers->setQuestion($this);  //revistar posteriormente
-    
-        return $this;
-    }
+	    /**
+	     * Remove answers
+	     *
+	     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
+	     */
+	    public function removeAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
+	    {
+	        $this->answers->removeElement($answers);
+	    }
 
-    /**
-     * Remove answers
-     *
-     * @param \Tipddy\SurveyBundle\Entity\Answer $answers
-     */
-    public function removeAnswer(\Tipddy\SurveyBundle\Entity\Answer $answers)
-    {
-        $this->answers->removeElement($answers);
-    }
-
-    /**
-     * Get answers
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAnswers()
-    {
-        return $this->answers;
-    }
-
-    /**
-     * Set questionType
-     *
-     * @param \Tipddy\SurveyBundle\Entity\QuestionType $questionType
-     * @return Question
-     */
-    public function setQuestionType(\Tipddy\SurveyBundle\Entity\QuestionType $questionType = null)
-    {
-        $this->questionType = $questionType;
-    
-        return $this;
-    }
+	    /**
+	     * Get answers
+	     *
+	     * @return \Doctrine\Common\Collections\Collection 
+	     */
+	    public function getAnswers()
+	    {
+	        return $this->answers;
+	    }
+	
+	    /**
+	     * Set questionType
+	     *
+	     * @param \Tipddy\SurveyBundle\Entity\QuestionType $questionType
+	     * @return Question
+	     */
+	    public function setQuestionType(\Tipddy\SurveyBundle\Entity\QuestionType $questionType = null)
+	    {
+	        $this->questionType = $questionType;
+	    
+	        return $this;
+	    }
 
     /**
      * Get questionType

@@ -112,7 +112,7 @@ class SurveyController extends Controller
      * Displays a form to edit an existing Survey entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -121,6 +121,10 @@ class SurveyController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Survey entity.');
         }
+        
+        //create session menu left
+        $session = $request->getSession();
+        $session->set('survey', $entity->getId());
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
